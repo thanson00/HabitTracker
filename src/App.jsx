@@ -65,8 +65,14 @@ export default function App() {
 
   return (
     <div style={{ padding: 20, maxWidth: 1200, margin: "0 auto" }}>
-      <header style={{ marginBottom: 20 }}>
+      <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
         <h1 style={{ fontFamily: "var(--font-family)", fontSize: "2rem", fontWeight: "600", margin: 0, textTransform: "uppercase" }}>Habit Tracker</h1>
+        <button 
+          onClick={() => { const d=new Date(); setYear(d.getFullYear()); setMonthIndex(d.getMonth()); }}
+          style={{ fontSize: "0.9rem", padding: "6px 10px" }}
+        >
+          Today
+        </button>
       </header>
 
       <div className="month-nav">
@@ -76,12 +82,6 @@ export default function App() {
             style={{ fontSize: "1.2rem", padding: "8px 12px" }}
           >
             ◀
-          </button>
-          <button 
-            onClick={() => { const d=new Date(); setYear(d.getFullYear()); setMonthIndex(d.getMonth()); }}
-            style={{ fontSize: "0.9rem", padding: "6px 10px" }}
-          >
-            Today
           </button>
           <button 
             onClick={() => setMonthIndex((m) => (m === 11 ? (setYear(y=>y+1), 0) : m+1))}
