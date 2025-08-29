@@ -104,28 +104,51 @@ button:focus-visible {
   color: var(--text);
   font-family: var(--font-family);
 }
-.goal-head { text-align:center; }
+.goal-head {
+  display: flex;
+  justify-content: center;   /* center over column */
+  align-items: flex-end;      /* push label to bottom of header cell */
+  padding: 0; 
+  margin: 0;
+  min-height: 120px;
+}
+
+.goal-head .goal-title {
+  /* vertical, not flipped */
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: none;            /* IMPORTANT: no rotate(180deg) or rotate(90deg) */
+  transform-origin: bottom center;
+  line-height: 1;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0 2px;
+  font-weight: 600; 
+  font-size: 0.9rem; 
+  color: var(--text); 
+  font-family: var(--font-family);
+}
+
+.goal-head .goal-sub {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: none;
+  transform-origin: bottom center;
+  line-height: 1;
+  text-align: center;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.7rem; 
+  font-family: var(--font-family);
+}
+
 .goal-chip { width:100%; height:3px; border-radius:0px; margin-bottom:4px; }
-.goal-title { font-weight:600; font-size:0.9rem; line-height:1.1; color:var(--text); font-family: var(--font-family); }
-.goal-sub { color:var(--text-muted); font-size:0.7rem; font-family: var(--font-family); }
 
 .habit-chip { 
   display: none;
 }
-.habit-title { 
-  font-weight: 600; 
-  font-size: 0.8rem; 
-  line-height: 1.1; 
-  color: var(--text); 
-  font-family: var(--font-family);
-  margin-bottom: 2px;
-  margin-top: 0;
-}
-.habit-sub { 
-  color: var(--text-muted); 
-  font-size: 0.6rem; 
-  font-family: var(--font-family); 
-}
+
 .tick { 
   cursor:pointer; 
   font-size:1rem; 
@@ -235,25 +258,47 @@ button:focus-visible {
   border-bottom-color: var(--text);
 }
 
-/* Remove borders from habit headers */
+/* Unified header styles - all headers use the same canonical rules */
 .habit-head {
-  text-align: center;
-  padding: 1px;
-  height: 120px;
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  justify-content: center;   /* center over column */
+  align-items: flex-end;      /* push label to bottom of header cell */
+  padding: 0; 
+  margin: 0;
+  min-height: 120px;
   border: none;
-  border-bottom: none;
-  border-top: none;
-  border-left: none;
-  border-right: none;
   position: relative;
   white-space: nowrap;
+}
+
+.habit-head .habit-title {
+  /* vertical, not flipped */
   writing-mode: vertical-rl;
-  transform-origin: center;
-  margin-bottom: 0;
-  padding-bottom: 0;
+  text-orientation: mixed;
+  transform: none;            /* IMPORTANT: no rotate(180deg) or rotate(90deg) */
+  transform-origin: bottom center;
+  line-height: 1;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0 2px;
+  font-weight: 600; 
+  font-size: 0.8rem; 
+  color: var(--text); 
+  font-family: var(--font-family);
+}
+
+.habit-head .habit-sub {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: none;
+  transform-origin: bottom center;
+  line-height: 1;
+  text-align: center;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.6rem; 
+  font-family: var(--font-family);
 }
 
 /* Habit headers */
