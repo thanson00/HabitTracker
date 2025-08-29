@@ -110,10 +110,7 @@ button:focus-visible {
 .goal-sub { color:var(--text-muted); font-size:0.7rem; font-family: var(--font-family); }
 
 .habit-chip { 
-  width: 100%; 
-  height: 3px; 
-  border-radius: 0px; 
-  margin-bottom: 4px; 
+  display: none;
 }
 .habit-title { 
   font-weight: 600; 
@@ -122,6 +119,7 @@ button:focus-visible {
   color: var(--text); 
   font-family: var(--font-family);
   margin-bottom: 2px;
+  margin-top: 0;
 }
 .habit-sub { 
   color: var(--text-muted); 
@@ -248,12 +246,13 @@ button:focus-visible {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-bottom: 0;
+  padding: 1px 1px 0 1px;
   border: none;
   border-bottom: none;
   border-top: none;
   border-left: none;
   border-right: none;
+  position: relative;
 }
 
 /* Habit headers */
