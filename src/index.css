@@ -244,9 +244,9 @@ button:focus-visible {
   transform: rotate(180deg);
   height: 120px;
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: center;
-  padding: 1px 1px 0 1px;
+  padding: 1px 1px 8px 1px;
   border: none;
   border-bottom: none;
   border-top: none;
