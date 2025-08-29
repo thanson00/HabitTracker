@@ -238,12 +238,11 @@ button:focus-visible {
 /* Remove borders from habit headers */
 .habit-head {
   text-align: left;
-  padding: 1px;
+  padding: 0;
   height: 120px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  padding-bottom: 20px;
   border: none;
   border-bottom: none;
   border-top: none;
