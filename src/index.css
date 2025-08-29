@@ -241,8 +241,8 @@ button:focus-visible {
   padding: 1px;
   height: 120px;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   border: none;
   border-bottom: none;
   border-top: none;
