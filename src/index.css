@@ -34,6 +34,7 @@ body {
   font-family: var(--font-family);
   font-size: 16px;
   line-height: 1.4;
+  text-transform: uppercase;
 }
 
 h1 {
@@ -43,19 +44,18 @@ h1 {
 
 button {
   border-radius: 0px;
-  border: 1px solid var(--border);
+  border: none;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: var(--font-family);
-  background-color: var(--surface);
+  background-color: transparent;
   color: var(--text);
   cursor: pointer;
-  transition: border-color 0.15s, background-color 0.15s;
+  transition: color 0.15s;
 }
 button:hover {
-  border-color: var(--text);
-  background-color: var(--bg);
+  color: var(--text-muted);
 }
 button:focus,
 button:focus-visible {
@@ -72,28 +72,28 @@ button:focus-visible {
 .month-grid { 
   display:flex; 
   flex-direction:column; 
-  gap:2px; 
+  gap:0px; 
   max-width: 1200px;
   margin: 0 auto;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: transparent;
   padding: 20px;
 }
 .header, .row { 
   display:grid; 
   grid-template-columns: 80px repeat(auto-fit, minmax(80px,1fr)) 120px; 
-  gap:2px; 
+  gap:0px; 
 }
 .cell { 
-  border:1px solid var(--border); 
-  background:var(--surface); 
-  border-radius:var(--radius); 
+  border: none;
+  background: transparent;
+  border-radius: var(--radius); 
   padding: 8px 6px;
   font-family: var(--font-family);
+  position: relative;
 }
-.date-col { background:var(--bg); }
+.date-col { background: transparent; }
 .notes-col { 
-  background:var(--bg); 
+  background: transparent; 
   font-size: 0.75rem;
   color: var(--text-muted);
   font-family: var(--font-family);
@@ -111,15 +111,16 @@ button:focus-visible {
 .tick { 
   cursor:pointer; 
   font-size:1.1rem; 
-  min-height:36px; 
+  min-height:40px; 
   display:grid; 
   place-items:center; 
   border-radius:var(--radius); 
   transition:background .15s ease,color .15s ease; 
   font-family: var(--font-family);
+  border: 1px solid transparent;
 }
 .tick:not(.disabled):hover { 
-  background:color-mix(in srgb,var(--cell-accent) 20%,transparent); 
+  background:color-mix(in srgb,var(--cell-accent) 15%,transparent); 
   border-color: var(--cell-accent);
 }
 .tick.on { 
@@ -128,12 +129,12 @@ button:focus-visible {
   border-color:var(--cell-accent); 
 }
 .tick.disabled { 
-  background:var(--bg); 
+  background: transparent; 
   color:var(--muted); 
   cursor:not-allowed; 
-  border-color: var(--border);
+  border-color: transparent;
 }
-.sticky { position:sticky; top:0; background:var(--bg); z-index:2; }
+.sticky { position:sticky; top:0; background: transparent; z-index:2; }
 
 .date-info {
   display: flex;
@@ -177,7 +178,7 @@ button:focus-visible {
   z-index: 50;
 }
 .dd-panel {
-  background: var(--surface); 
+  background: var(--bg); 
   color: var(--text); 
   border: 1px solid var(--border);
   padding: 24px; 
@@ -212,6 +213,8 @@ button:focus-visible {
 }
 .dd-goal input[type="checkbox"] {
   margin: 0;
+  transform: scale(1.2);
+  accent-color: var(--cell-accent);
 }
 .dd-goal label {
   display: flex;
@@ -239,7 +242,7 @@ button:focus-visible {
   padding: 8px 12px; 
   border-radius: 0px; 
   border: 1px solid var(--border); 
-  background: var(--surface); 
+  background: transparent; 
   color: var(--text); 
   cursor: pointer;
   font-size: 0.875rem;
@@ -248,7 +251,7 @@ button:focus-visible {
 }
 .btn:hover {
   background: var(--bg);
-  border-color: var(--text-muted);
+  border-color: var(--text);
 }
 .btn.primary { 
   background: var(--cell-accent); 

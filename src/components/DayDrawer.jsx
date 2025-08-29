@@ -85,15 +85,17 @@ export default function DayDrawer({
           <textarea
             value={note}
             onChange={(e) => onChangeNote(e.target.value)}
-            placeholder="Add a note for this day..."
+            placeholder="ADD A NOTE FOR THIS DAY..."
             rows={4}
             style={{
               width: "100%",
               padding: "8px",
-              border: "1px solid #d1d5db",
-              borderRadius: "6px",
+              border: "1px solid var(--border)",
+              borderRadius: "0px",
               resize: "vertical",
-              fontFamily: "inherit"
+              fontFamily: "var(--font-family)",
+              background: "transparent",
+              color: "var(--text)"
             }}
           />
         </div>
