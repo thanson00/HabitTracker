@@ -65,17 +65,36 @@ export default function App() {
 
   return (
     <div style={{ padding: 20, maxWidth: 1200, margin: "0 auto" }}>
-      <header style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:20 }}>
+      <header style={{ marginBottom: 20 }}>
         <h1 style={{ fontFamily: "var(--font-family)", fontSize: "2rem", fontWeight: "600", margin: 0, textTransform: "uppercase" }}>Habit Tracker</h1>
-        <div style={{ display:"flex", gap:8 }}>
-          <button onClick={() => setMonthIndex((m) => (m === 0 ? (setYear(y=>y-1), 11) : m-1))}>◀</button>
-          <div style={{ minWidth: 160, textAlign: "center" }}>{monthLabel}</div>
-          <button onClick={() => setMonthIndex((m) => (m === 11 ? (setYear(y=>y+1), 0) : m+1))}>▶</button>
-          <button onClick={() => { const d=new Date(); setYear(d.getFullYear()); setMonthIndex(d.getMonth()); }}>
+      </header>
+
+      <div className="month-nav">
+        <div className="month-nav-buttons">
+          <button 
+            onClick={() => setMonthIndex((m) => (m === 0 ? (setYear(y=>y-1), 11) : m-1))}
+            style={{ fontSize: "1.2rem", padding: "8px 12px" }}
+          >
+            ◀
+          </button>
+          <button 
+            onClick={() => { const d=new Date(); setYear(d.getFullYear()); setMonthIndex(d.getMonth()); }}
+            style={{ fontSize: "0.9rem", padding: "6px 10px" }}
+          >
             Today
           </button>
+          <button 
+            onClick={() => setMonthIndex((m) => (m === 11 ? (setYear(y=>y+1), 0) : m+1))}
+            style={{ fontSize: "1.2rem", padding: "8px 12px" }}
+          >
+            ▶
+          </button>
         </div>
-      </header>
+        
+        <div className="month-title">
+          <h2>{monthLabel}</h2>
+        </div>
+      </div>
 
       <MonthGrid
         year={year}
