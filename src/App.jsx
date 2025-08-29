@@ -4,25 +4,37 @@ import DayDrawer from "./components/DayDrawer";
 import { toYMD, isWeekday, isWeekend } from "./lib/date";
 
 const CATS = {
-  fitness: "#22C55E",
-  health: "#06B6D4",
-  nutrition: "#F59E0B",
-  mindset: "#A78BFA",
-  sleep: "#EF4444",
+  build: "#4A7C59",
+  break: "#8B5A5A", 
+  track: "#5B7A9A",
 };
 
-const seedGoals = [
-  { id: "g1", title: "Exercise", value: 30, unit: "min", schedule: "daily",   categoryColor: CATS.fitness },
-  { id: "g2", title: "Steps",    value: 8000, unit: "steps", schedule: "daily",  categoryColor: CATS.health },
-  { id: "g3", title: "Read",     value: 15, unit: "min", schedule: "weekday", categoryColor: CATS.mindset },
-  { id: "g4", title: "Bed by 10:30", schedule: "daily", categoryColor: CATS.sleep },
-];
+const seedHabits = {
+  build: [
+    { id: "b1", title: "Exercise", value: 30, unit: "min", schedule: "daily", categoryColor: CATS.build },
+    { id: "b2", title: "Read", value: 15, unit: "min", schedule: "weekday", categoryColor: CATS.build },
+    { id: "b3", title: "Journal", schedule: "daily", categoryColor: CATS.build },
+    { id: "b4", title: "Meditate", value: 10, unit: "min", schedule: "daily", categoryColor: CATS.build },
+  ],
+  break: [
+    { id: "br1", title: "Alcohol", schedule: "daily", categoryColor: CATS.break },
+    { id: "br2", title: "Sugar", schedule: "daily", categoryColor: CATS.break },
+    { id: "br3", title: "Screen Time", value: 2, unit: "hrs", schedule: "daily", categoryColor: CATS.break },
+    { id: "br4", title: "Smoking", schedule: "daily", categoryColor: CATS.break },
+  ],
+  track: [
+    { id: "t1", title: "Weight", unit: "lbs", schedule: "daily", categoryColor: CATS.track },
+    { id: "t2", title: "Steps", unit: "steps", schedule: "daily", categoryColor: CATS.track },
+    { id: "t3", title: "Sleep", unit: "hrs", schedule: "daily", categoryColor: CATS.track },
+    { id: "t4", title: "Water", unit: "glasses", schedule: "daily", categoryColor: CATS.track },
+  ]
+};
 
 export default function App() {
   const today = new Date();
   const [year, setYear] = useState(today.getFullYear());
   const [monthIndex, setMonthIndex] = useState(today.getMonth());
-  const [goals] = useState(seedGoals);
+  const [habits] = useState(seedHabits);
 
   // checks stored in-memory as { "YYYY-MM-DD:goalId": true }
   const [checks, setChecks] = useState(() => ({}));
@@ -99,7 +111,7 @@ export default function App() {
       <MonthGrid
         year={year}
         monthIndex={monthIndex}
-        goals={goals}
+        habits={habits}
         checks={checks}
         onToggle={onToggle}
         onOpenDay={setOpenDay}
@@ -110,12 +122,12 @@ export default function App() {
       <DayDrawer
         open={!!openDay}
         dateYMD={openDay}
-        goals={goals}
-        applies={(goalId) => openDay ? applies(openDay, goals.find(g => g.id === goalId)) : false}
-        checked={(goalId) => openDay ? checked(openDay, goalId) : false}
-        onToggle={(goalId, next) => {
+        habits={habits}
+        applies={(habitId) => openDay ? applies(openDay, Object.values(habits).flat().find(h => h.id === habitId)) : false}
+        checked={(habitId) => openDay ? checked(openDay, habitId) : false}
+        onToggle={(habitId, next) => {
           if (openDay) {
-            onToggle(openDay, goalId, next);
+            onToggle(openDay, habitId, next);
           }
         }}
         note={openDay ? getNote(openDay) : ''}

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 export default function DayDrawer({
   open,
   dateYMD,
-  goals,
+  habits,
   applies,
   checked,
   onToggle,
@@ -42,38 +42,126 @@ export default function DayDrawer({
         </div>
 
         <div className="dd-section">
-          <h3>Goals</h3>
-          {goals.map((goal) => {
-            const goalApplies = applies(goal.id);
-            const isChecked = checked(goal.id);
+          <h3>Build Habits</h3>
+          {habits.build.map((habit) => {
+            const habitApplies = applies(habit.id);
+            const isChecked = checked(habit.id);
 
             return (
-              <div key={goal.id} className="dd-goal">
+              <div key={habit.id} className="dd-goal">
                 <input
                   type="checkbox"
-                  id={`goal-${goal.id}`}
+                  id={`habit-${habit.id}`}
                   checked={isChecked}
-                  disabled={!goalApplies}
-                  onChange={(e) => onToggle(goal.id, e.target.checked)}
+                  disabled={!habitApplies}
+                  onChange={(e) => onToggle(habit.id, e.target.checked)}
                 />
                 <label 
-                  htmlFor={`goal-${goal.id}`}
+                  htmlFor={`habit-${habit.id}`}
                   style={{ 
-                    color: goalApplies ? "inherit" : "#9ca3af",
-                    cursor: goalApplies ? "pointer" : "default"
+                    color: habitApplies ? "inherit" : "#9ca3af",
+                    cursor: habitApplies ? "pointer" : "default"
                   }}
                 >
                   <span 
-                    className="goal-chip" 
-                    style={{ background: goal.categoryColor }}
+                    className="habit-chip" 
+                    style={{ background: habit.categoryColor }}
                   />
-                  {goal.title}
-                  {goal.value && (
-                    <span className="goal-sub">
-                      {" "}({goal.value}{goal.unit ? ` ${goal.unit}` : ""})
+                  {habit.title}
+                  {habit.value && (
+                    <span className="habit-sub">
+                      {" "}({habit.value}{habit.unit ? ` ${habit.unit}` : ""})
                     </span>
                   )}
-                  {!goalApplies && " — Not applicable"}
+                  {!habitApplies && " — Not applicable"}
+                </label>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="dd-section">
+          <h3>Break Habits</h3>
+          {habits.break.map((habit) => {
+            const habitApplies = applies(habit.id);
+            const isChecked = checked(habit.id);
+
+            return (
+              <div key={habit.id} className="dd-goal">
+                <input
+                  type="checkbox"
+                  id={`habit-${habit.id}`}
+                  checked={isChecked}
+                  disabled={!habitApplies}
+                  onChange={(e) => onToggle(habit.id, e.target.checked)}
+                />
+                <label 
+                  htmlFor={`habit-${habit.id}`}
+                  style={{ 
+                    color: habitApplies ? "inherit" : "#9ca3af",
+                    cursor: habitApplies ? "pointer" : "default"
+                  }}
+                >
+                  <span 
+                    className="habit-chip" 
+                    style={{ background: habit.categoryColor }}
+                  />
+                  {habit.title}
+                  {habit.value && (
+                    <span className="habit-sub">
+                      {" "}({habit.value}{habit.unit ? ` ${habit.unit}` : ""})
+                    </span>
+                  )}
+                  {!habitApplies && " — Not applicable"}
+                </label>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="dd-section">
+          <h3>Track Metrics</h3>
+          {habits.track.map((habit) => {
+            const habitApplies = applies(habit.id);
+            const value = checked(habit.id) || "";
+
+            return (
+              <div key={habit.id} className="dd-goal">
+                <label 
+                  style={{ 
+                    color: habitApplies ? "inherit" : "#9ca3af",
+                    cursor: habitApplies ? "pointer" : "default"
+                  }}
+                >
+                  <span 
+                    className="habit-chip" 
+                    style={{ background: habit.categoryColor }}
+                  />
+                  {habit.title}
+                  {habit.unit && (
+                    <span className="habit-sub">
+                      {" "}({habit.unit})
+                    </span>
+                  )}
+                  {habitApplies && (
+                    <input
+                      type="text"
+                      value={value}
+                      onChange={(e) => onToggle(habit.id, e.target.value)}
+                      placeholder="Enter value..."
+                      style={{
+                        marginLeft: "8px",
+                        padding: "4px 8px",
+                        border: "1px solid var(--border)",
+                        borderRadius: "0px",
+                        background: "transparent",
+                        color: "var(--text)",
+                        fontFamily: "var(--font-family)",
+                        fontSize: "0.9rem"
+                      }}
+                    />
+                  )}
+                  {!habitApplies && " — Not applicable"}
                 </label>
               </div>
             );

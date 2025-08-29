@@ -78,9 +78,9 @@ button:focus-visible {
   background: transparent;
   padding: 20px;
 }
-.header, .row { 
+.category-headers, .habit-headers, .row { 
   display:grid; 
-  grid-template-columns: 80px repeat(auto-fit, minmax(80px,1fr)) 120px; 
+  grid-template-columns: 80px 120px repeat(4, minmax(80px,1fr)) repeat(4, minmax(80px,1fr)) repeat(4, minmax(80px,1fr)); 
   gap:0px; 
 }
 .cell { 
@@ -108,6 +108,26 @@ button:focus-visible {
 .goal-chip { width:100%; height:3px; border-radius:0px; margin-bottom:4px; }
 .goal-title { font-weight:600; font-size:0.9rem; line-height:1.1; color:var(--text); font-family: var(--font-family); }
 .goal-sub { color:var(--text-muted); font-size:0.7rem; font-family: var(--font-family); }
+
+.habit-chip { 
+  width: 100%; 
+  height: 3px; 
+  border-radius: 0px; 
+  margin-bottom: 4px; 
+}
+.habit-title { 
+  font-weight: 600; 
+  font-size: 0.8rem; 
+  line-height: 1.1; 
+  color: var(--text); 
+  font-family: var(--font-family);
+  margin-bottom: 2px;
+}
+.habit-sub { 
+  color: var(--text-muted); 
+  font-size: 0.6rem; 
+  font-family: var(--font-family); 
+}
 .tick { 
   cursor:pointer; 
   font-size:1.1rem; 
@@ -134,7 +154,92 @@ button:focus-visible {
   cursor:not-allowed; 
   border-color: transparent;
 }
+
+/* Track cells */
+.track-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 4px;
+}
+
+.track-input {
+  width: 100%;
+  max-width: 60px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  padding: 4px;
+  border-radius: 0px;
+}
+
+.track-input:focus {
+  outline: none;
+  border: 1px solid var(--cell-accent);
+}
+
+.track-input::placeholder {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.disabled-text {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
 .sticky { position:sticky; top:0; background: transparent; z-index:2; }
+
+/* Category headers */
+.category-headers {
+  position: sticky;
+  top: 0;
+  background: transparent;
+  z-index: 3;
+}
+
+.category-header {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 12px 6px;
+  border-bottom: 2px solid var(--border);
+}
+
+.category-header.build {
+  color: var(--cat-build);
+}
+
+.category-header.break {
+  color: var(--cat-break);
+}
+
+.category-header.track {
+  color: var(--cat-track);
+}
+
+/* Habit headers */
+.habit-headers {
+  position: sticky;
+  top: 60px;
+  background: transparent;
+  z-index: 2;
+}
+
+.habit-head {
+  text-align: center;
+  padding: 8px 4px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Month navigation styling */
 .month-nav {
