@@ -41,9 +41,11 @@ export default function MonthGrid({
         <div className="cell category-header build" style={{ gridColumn: `span ${buildCols}` }}>
           Build
         </div>
+        <div className="cell spacer"></div>
         <div className="cell category-header break" style={{ gridColumn: `span ${breakCols}` }}>
           Break
         </div>
+        <div className="cell spacer"></div>
         <div className="cell category-header track" style={{ gridColumn: `span ${trackCols}` }}>
           Track
         </div>
@@ -60,6 +62,7 @@ export default function MonthGrid({
             {h.value && <div className="habit-sub">{h.value}{h.unit ? ` ${h.unit}` : ""}</div>}
           </div>
         ))}
+        <div className="cell spacer"></div>
         {habits.break.map((h) => (
           <div key={h.id} className="cell habit-head break" title={h.title}>
             <div className="habit-chip" style={{ background: h.categoryColor }} />
@@ -67,6 +70,7 @@ export default function MonthGrid({
             {h.value && <div className="habit-sub">{h.value}{h.unit ? ` ${h.unit}` : ""}</div>}
           </div>
         ))}
+        <div className="cell spacer"></div>
         {habits.track.map((h) => (
           <div key={h.id} className="cell habit-head track" title={h.title}>
             <div className="habit-chip" style={{ background: h.categoryColor }} />
@@ -122,6 +126,8 @@ export default function MonthGrid({
               );
             })}
 
+            <div className="cell spacer"></div>
+
             {/* Break Habits */}
             {habits.break.map((h) => {
               const applies = habitApplies(h, date);
@@ -140,6 +146,8 @@ export default function MonthGrid({
                 </button>
               );
             })}
+
+            <div className="cell spacer"></div>
 
             {/* Track Metrics */}
             {habits.track.map((h) => {

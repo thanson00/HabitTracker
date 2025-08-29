@@ -80,7 +80,7 @@ button:focus-visible {
 }
 .category-headers, .habit-headers, .row { 
   display:grid; 
-  grid-template-columns: 80px 120px repeat(4, 20px) repeat(4, 20px) repeat(4, minmax(80px,1fr)); 
+  grid-template-columns: 80px 120px repeat(4, 20px) 4px repeat(4, 20px) 4px repeat(4, minmax(80px,1fr)); 
   gap:0px; 
 }
 .cell { 
@@ -191,6 +191,13 @@ button:focus-visible {
   color: var(--muted);
   font-size: 0.9rem;
 }
+
+.spacer {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 4px;
+}
 .sticky { position:sticky; top:0; background: transparent; z-index:2; }
 
 /* Category headers */
@@ -206,19 +213,27 @@ button:focus-visible {
   font-weight: 700;
   font-size: 1.1rem;
   padding: 1px;
-  border-bottom: 2px solid var(--border);
+  border-bottom: 3px solid var(--border);
+  margin-right: 4px;
+}
+
+.category-header:last-child {
+  margin-right: 0;
 }
 
 .category-header.build {
   color: var(--cat-build);
+  border-bottom-color: var(--cat-build);
 }
 
 .category-header.break {
   color: var(--cat-break);
+  border-bottom-color: var(--cat-break);
 }
 
 .category-header.track {
   color: var(--cat-track);
+  border-bottom-color: var(--cat-track);
 }
 
 /* Habit headers */
@@ -237,8 +252,9 @@ button:focus-visible {
   transform: rotate(180deg);
   height: 120px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  padding-bottom: 8px;
 }
 
 /* Month navigation styling */
