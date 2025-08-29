@@ -59,7 +59,6 @@ export default function MonthGrid({
           <div key={h.id} className="cell habit-head build" title={h.title}>
             <div className="habit-chip" style={{ background: h.categoryColor }} />
             <div className="habit-title">{h.title}</div>
-            {h.value && <div className="habit-sub">{h.value}{h.unit ? ` ${h.unit}` : ""}</div>}
           </div>
         ))}
         <div className="cell spacer"></div>
@@ -67,7 +66,6 @@ export default function MonthGrid({
           <div key={h.id} className="cell habit-head break" title={h.title}>
             <div className="habit-chip" style={{ background: h.categoryColor }} />
             <div className="habit-title">{h.title}</div>
-            {h.value && <div className="habit-sub">{h.value}{h.unit ? ` ${h.unit}` : ""}</div>}
           </div>
         ))}
         <div className="cell spacer"></div>
@@ -75,7 +73,6 @@ export default function MonthGrid({
           <div key={h.id} className="cell habit-head track" title={h.title}>
             <div className="habit-chip" style={{ background: h.categoryColor }} />
             <div className="habit-title">{h.title}</div>
-            {h.unit && <div className="habit-sub">{h.unit}</div>}
           </div>
         ))}
       </div>
