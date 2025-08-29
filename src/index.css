@@ -241,7 +241,6 @@ button:focus-visible {
   padding: 1px;
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  transform: rotate(180deg);
   height: 120px;
   display: flex;
   align-items: flex-end;
