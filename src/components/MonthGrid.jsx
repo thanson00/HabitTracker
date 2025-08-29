@@ -8,6 +8,7 @@ export default function MonthGrid({
   checks,
   onToggle,
   onOpenDay,
+  notes = {},
   weekStart = "monday",
 }) {
   const days = getMonthDays(year, monthIndex);
@@ -35,6 +36,7 @@ export default function MonthGrid({
             {g.value && <div className="goal-sub">{g.value}{g.unit ? ` ${g.unit}` : ""}</div>}
           </div>
         ))}
+        <div className="cell notes-col head">Notes</div>
       </div>
 
       {orderedDays.map((date) => {
@@ -71,6 +73,14 @@ export default function MonthGrid({
                 </button>
               );
             })}
+            
+            <div className="cell notes-col">
+              {notes[ymd] && (
+                <div className="note-preview" title={notes[ymd]}>
+                  {notes[ymd].length > 20 ? `${notes[ymd].substring(0, 20)}...` : notes[ymd]}
+                </div>
+              )}
+            </div>
           </div>
         );
       })}

@@ -84,6 +84,7 @@ export default function App() {
         checks={checks}
         onToggle={onToggle}
         onOpenDay={setOpenDay}
+        notes={notes}
         weekStart="monday"
       />
 
