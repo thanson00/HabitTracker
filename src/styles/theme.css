@@ -1,24 +1,33 @@
 :root {
-  --bg: #F9FAFB;
+  /* Journal-like color palette */
+  --bg: #FEFEFE;
   --surface: #FFFFFF;
-  --border: #E5E7EB;
-  --text: #111827;
-  --text-muted: #6B7280;
-  --muted: #9CA3AF;
+  --border: #E8E8E8;
+  --text: #2C2C2C;
+  --text-muted: #6B6B6B;
+  --muted: #A0A0A0;
+  
+  /* Subtle accent colors for goals */
+  --cat-fitness:  #4A7C59;
+  --cat-health:   #5B7A9A;
+  --cat-nutrition:#B8860B;
+  --cat-mindset:  #7B68A8;
+  --cat-sleep:    #8B5A5A;
+  --cat-other:    #6B7A8B;
 
-  --cat-fitness:  #22C55E;
-  --cat-health:   #06B6D4;
-  --cat-nutrition:#F59E0B;
-  --cat-mindset:  #A78BFA;
-  --cat-sleep:    #EF4444;
-  --cat-other:    #94A3B8;
-
-  --radius: 10px;
-  --radius-lg: 12px;
-  --shadow: 0 10px 30px rgba(0,0,0,0.12);
-  --shadow-lg: 0 16px 40px rgba(0,0,0,0.16);
+  /* Minimal styling */
+  --radius: 0px;
+  --radius-lg: 0px;
+  --shadow: none;
+  --shadow-lg: none;
 
   --cell-accent: var(--cat-fitness);
   
-  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Handwritten-style font */
+  --font-family: "Caveat", "Comic Sans MS", "Brush Script MT", cursive, serif;
+  
+  /* Dot grid pattern */
+  --dot-color: #E0E0E0;
+  --dot-size: 1px;
+  --dot-spacing: 20px;
 }

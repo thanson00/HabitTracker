@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 @import "./styles/theme.css";
 
 :root {
@@ -25,8 +26,14 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background: var(--bg);
+  background-image: 
+    radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
+  background-size: var(--dot-spacing) var(--dot-spacing);
+  background-position: 0 0, calc(var(--dot-spacing) / 2) calc(var(--dot-spacing) / 2);
   color: var(--text);
   font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 h1 {
@@ -35,20 +42,19 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
+  border-radius: 0px;
+  border: 1px solid var(--border);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
+  font-family: var(--font-family);
   background-color: var(--surface);
   color: var(--text);
-  border-color: var(--border);
   cursor: pointer;
-  transition: border-color 0.25s, background-color 0.25s;
+  transition: border-color 0.15s, background-color 0.15s;
 }
 button:hover {
-  border-color: var(--text-muted);
+  border-color: var(--text);
   background-color: var(--bg);
 }
 button:focus,
@@ -66,58 +72,66 @@ button:focus-visible {
 .month-grid { 
   display:flex; 
   flex-direction:column; 
-  gap:4px; 
+  gap:2px; 
   max-width: 1200px;
   margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 20px;
 }
 .header, .row { 
   display:grid; 
   grid-template-columns: 80px repeat(auto-fit, minmax(80px,1fr)) 120px; 
-  gap:4px; 
+  gap:2px; 
 }
 .cell { 
   border:1px solid var(--border); 
   background:var(--surface); 
   border-radius:var(--radius); 
-  padding: 6px;
+  padding: 8px 6px;
+  font-family: var(--font-family);
 }
 .date-col { background:var(--bg); }
 .notes-col { 
   background:var(--bg); 
   font-size: 0.75rem;
   color: var(--text-muted);
+  font-family: var(--font-family);
 }
 .notes-col.head {
   text-align: center;
   font-weight: 600;
   color: var(--text);
+  font-family: var(--font-family);
 }
 .goal-head { text-align:center; }
-.goal-chip { width:100%; height:4px; border-radius:3px; margin-bottom:6px; }
-.goal-title { font-weight:600; font-size:0.9rem; line-height:1.1; color:var(--text); }
-.goal-sub { color:var(--text-muted); font-size:0.7rem; }
+.goal-chip { width:100%; height:3px; border-radius:0px; margin-bottom:4px; }
+.goal-title { font-weight:600; font-size:0.9rem; line-height:1.1; color:var(--text); font-family: var(--font-family); }
+.goal-sub { color:var(--text-muted); font-size:0.7rem; font-family: var(--font-family); }
 .tick { 
   cursor:pointer; 
-  font-size:1rem; 
+  font-size:1.1rem; 
   min-height:36px; 
   display:grid; 
   place-items:center; 
   border-radius:var(--radius); 
   transition:background .15s ease,color .15s ease; 
+  font-family: var(--font-family);
 }
 .tick:not(.disabled):hover { 
-  background:color-mix(in srgb,var(--cell-accent) 15%,transparent); 
-  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--cell-accent) 45%,transparent); 
+  background:color-mix(in srgb,var(--cell-accent) 20%,transparent); 
+  border-color: var(--cell-accent);
 }
 .tick.on { 
   background:var(--cell-accent); 
   color:white; 
-  border-color:transparent; 
+  border-color:var(--cell-accent); 
 }
 .tick.disabled { 
-  background:#F3F4F6; 
+  background:var(--bg); 
   color:var(--muted); 
   cursor:not-allowed; 
+  border-color: var(--border);
 }
 .sticky { position:sticky; top:0; background:var(--bg); z-index:2; }
 
@@ -127,18 +141,21 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   line-height: 1.2;
+  font-family: var(--font-family);
 }
 .date-num {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-family: var(--font-family);
 }
 .date-wd {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-family: var(--font-family);
 }
 
 .note-preview {
@@ -146,13 +163,14 @@ button:focus-visible {
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: pointer;
+  font-family: var(--font-family);
 }
 
 /* DayDrawer */
 .dd-overlay {
   position: fixed; 
   inset: 0;
-  background: rgba(0,0,0,.45);
+  background: rgba(0,0,0,.3);
   display: flex; 
   align-items: center; 
   justify-content: center;
@@ -161,28 +179,30 @@ button:focus-visible {
 .dd-panel {
   background: var(--surface); 
   color: var(--text); 
-  border-radius: var(--radius-lg); 
-  box-shadow: var(--shadow-lg); 
-  padding: 20px; 
+  border: 1px solid var(--border);
+  padding: 24px; 
   max-width: 560px; 
   width: 92vw;
   max-height: 80vh;
   overflow-y: auto;
+  font-family: var(--font-family);
 }
 .dd-header { 
-  font-size: 1.25rem; 
+  font-size: 1.4rem; 
   font-weight: 600; 
-  margin-bottom: 12px; 
+  margin-bottom: 16px; 
   color: var(--text);
+  font-family: var(--font-family);
 }
 .dd-section {
   margin-bottom: 20px;
 }
 .dd-section h3 {
   margin: 0 0 12px 0;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--text);
+  font-family: var(--font-family);
 }
 .dd-goal { 
   display: flex; 
@@ -197,13 +217,14 @@ button:focus-visible {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.4;
+  font-family: var(--font-family);
 }
 .dd-goal .goal-chip {
   width: 12px;
   height: 12px;
-  border-radius: 2px;
+  border-radius: 0px;
   margin: 0;
 }
 .dd-actions { 
@@ -216,12 +237,13 @@ button:focus-visible {
 /* Button styles */
 .btn { 
   padding: 8px 12px; 
-  border-radius: 10px; 
+  border-radius: 0px; 
   border: 1px solid var(--border); 
   background: var(--surface); 
   color: var(--text); 
   cursor: pointer;
   font-size: 0.875rem;
+  font-family: var(--font-family);
   transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 .btn:hover {

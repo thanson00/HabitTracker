@@ -64,9 +64,9 @@ export default function App() {
   }, [year, monthIndex]);
 
   return (
-    <div style={{ padding: 16, maxWidth: 1100, margin: "0 auto" }}>
-      <header style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:12 }}>
-        <h1>Habit Tracker (UI demo)</h1>
+    <div style={{ padding: 20, maxWidth: 1200, margin: "0 auto" }}>
+      <header style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:20 }}>
+        <h1 style={{ fontFamily: "var(--font-family)", fontSize: "2rem", fontWeight: "600", margin: 0 }}>Habit Tracker</h1>
         <div style={{ display:"flex", gap:8 }}>
           <button onClick={() => setMonthIndex((m) => (m === 0 ? (setYear(y=>y-1), 11) : m-1))}>◀</button>
           <div style={{ minWidth: 160, textAlign: "center" }}>{monthLabel}</div>
@@ -106,8 +106,8 @@ export default function App() {
         onClose={() => setOpenDay(null)}
       />
 
-      <footer style={{ marginTop: 12, color:"#6b7280" }}>
-        (Fake data for now. Toggling writes to local state only.)
+      <footer style={{ marginTop: 20, color:"var(--text-muted)", fontFamily: "var(--font-family)", fontSize: "0.9rem", textAlign: "center" }}>
+        Personal habit tracking journal
       </footer>
     </div>
   );
