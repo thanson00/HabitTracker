@@ -248,9 +248,12 @@ button:focus-visible {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-bottom: 8px;
+  padding-bottom: 0;
   border: none;
   border-bottom: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 /* Habit headers */
