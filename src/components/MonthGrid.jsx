@@ -61,6 +61,7 @@ export default function MonthGrid({
                 <button
                   key={g.id + ymd}
                   className={`cell tick ${applies ? "" : "disabled"} ${checked ? "on" : ""}`}
+                  style={{ '--cell-accent': g.categoryColor }}
                   onClick={() => applies && onToggle(ymd, g.id, !checked)}
                   aria-pressed={checked}
                 >

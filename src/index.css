@@ -1,11 +1,9 @@
+@import "./styles/theme.css";
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,6 +26,9 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
 h1 {
@@ -42,12 +43,15 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--text-muted);
+  background-color: var(--bg);
 }
 button:focus,
 button:focus-visible {
@@ -55,46 +59,60 @@ button:focus-visible {
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
   a:hover {
     color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }
 
 
 .month-grid { display:flex; flex-direction:column; gap:4px; }
 .header, .row { display:grid; grid-template-columns: 100px repeat(auto-fit, minmax(90px,1fr)); gap:4px; }
-.cell { border:1px solid #e5e7eb; padding:8px; background:#fff; }
-.date-col { background:#f8fafc; }
+.cell { border:1px solid var(--border); background:var(--surface); border-radius:var(--radius); }
+.date-col { background:var(--bg); }
 .goal-head { text-align:center; }
-.goal-chip { width:100%; height:4px; border-radius:2px; margin-bottom:6px; }
-.goal-title { font-weight:600; font-size:0.95rem; line-height:1.1; }
-.goal-sub { color:#6b7280; font-size:0.75rem; }
-.tick { cursor:pointer; font-size:1.1rem; }
-.tick.on { background:#e6ffe9; border-color:#16a34a; }
-.tick.disabled { background:#f3f4f6; color:#9ca3af; cursor:not-allowed; }
-.sticky { position:sticky; top:0; background:#f8fafc; z-index:2; }
+.goal-chip { width:100%; height:6px; border-radius:4px; margin-bottom:8px; }
+.goal-title { font-weight:600; font-size:0.95rem; line-height:1.1; color:var(--text); }
+.goal-sub { color:var(--text-muted); font-size:0.75rem; }
+.tick { 
+  cursor:pointer; 
+  font-size:1.1rem; 
+  min-height:44px; 
+  display:grid; 
+  place-items:center; 
+  border-radius:var(--radius); 
+  transition:background .15s ease,color .15s ease; 
+}
+.tick:not(.disabled):hover { 
+  background:color-mix(in srgb,var(--cell-accent) 15%,transparent); 
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--cell-accent) 45%,transparent); 
+}
+.tick.on { 
+  background:var(--cell-accent); 
+  color:white; 
+  border-color:transparent; 
+}
+.tick.disabled { 
+  background:#F3F4F6; 
+  color:var(--muted); 
+  cursor:not-allowed; 
+}
+.sticky { position:sticky; top:0; background:var(--bg); z-index:2; }
 
 /* DayDrawer */
 .dd-overlay {
   position: fixed; 
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,.45);
   display: flex; 
   align-items: center; 
   justify-content: center;
   z-index: 50;
 }
 .dd-panel {
-  background: white; 
-  border-radius: 12px; 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  background: var(--surface); 
+  color: var(--text); 
+  border-radius: var(--radius-lg); 
+  box-shadow: var(--shadow-lg); 
   padding: 20px; 
   max-width: 560px; 
   width: 92vw;
@@ -105,7 +123,7 @@ button:focus-visible {
   font-size: 1.25rem; 
   font-weight: 600; 
   margin-bottom: 12px; 
-  color: #1f2937;
+  color: var(--text);
 }
 .dd-section {
   margin-bottom: 20px;
@@ -114,7 +132,7 @@ button:focus-visible {
   margin: 0 0 12px 0;
   font-size: 1rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--text);
 }
 .dd-goal { 
   display: flex; 
@@ -144,15 +162,27 @@ button:focus-visible {
   gap: 8px; 
   margin-top: 16px; 
 }
-.dd-actions button { 
-  padding: 6px 12px; 
-  background: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.875rem;
+
+/* Button styles */
+.btn { 
+  padding: 8px 12px; 
+  border-radius: 10px; 
+  border: 1px solid var(--border); 
+  background: var(--surface); 
+  color: var(--text); 
   cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
-.dd-actions button:hover {
-  background: #2563eb;
+.btn:hover {
+  background: var(--bg);
+  border-color: var(--text-muted);
+}
+.btn.primary { 
+  background: var(--cell-accent); 
+  color: white; 
+  border-color: transparent; 
+}
+.btn.primary:hover {
+  background: color-mix(in srgb, var(--cell-accent) 85%, black);
 }

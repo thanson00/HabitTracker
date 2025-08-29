@@ -69,7 +69,7 @@ export default function DayDrawer({
                   />
                   {goal.title}
                   {goal.value && (
-                    <span style={{ color: "#6b7280", fontSize: "0.875rem" }}>
+                    <span className="goal-sub">
                       {" "}({goal.value}{goal.unit ? ` ${goal.unit}` : ""})
                     </span>
                   )}
@@ -99,7 +99,7 @@ export default function DayDrawer({
         </div>
 
         <div className="dd-actions">
-          <button onClick={onClose}>Close</button>
+          <button className="btn" onClick={onClose}>Close</button>
         </div>
       </div>
     </div>
