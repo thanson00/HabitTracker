@@ -249,6 +249,8 @@ button:focus-visible {
   border-left: none;
   border-right: none;
   position: relative;
+  white-space: nowrap;
+  transform: rotate(-90deg);
 }
 
 /* Habit headers */
