@@ -7,7 +7,12 @@
   --text-muted: #6B6B6B;
   --muted: #A0A0A0;
   
-  /* Subtle accent colors for goals */
+  /* Category colors */
+  --cat-build:  #4A7C59;
+  --cat-break:  #8B5A5A;
+  --cat-track:  #5B7A9A;
+  
+  /* Legacy colors for backward compatibility */
   --cat-fitness:  #4A7C59;
   --cat-health:   #5B7A9A;
   --cat-nutrition:#B8860B;

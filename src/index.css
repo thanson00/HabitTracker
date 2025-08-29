@@ -215,6 +215,7 @@ button:focus-visible {
   padding: 1px;
   border-bottom: 3px solid var(--border);
   margin-right: 4px;
+  position: relative;
 }
 
 .category-header:last-child {
@@ -236,14 +237,7 @@ button:focus-visible {
   border-bottom-color: var(--cat-track);
 }
 
-/* Habit headers */
-.habit-headers {
-  position: sticky;
-  top: 60px;
-  background: transparent;
-  z-index: 2;
-}
-
+/* Remove borders from habit headers */
 .habit-head {
   text-align: center;
   padding: 1px;
@@ -255,6 +249,15 @@ button:focus-visible {
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 8px;
+  border-bottom: none;
+}
+
+/* Habit headers */
+.habit-headers {
+  position: sticky;
+  top: 60px;
+  background: transparent;
+  z-index: 2;
 }
 
 /* Month navigation styling */
