@@ -251,8 +251,9 @@ button:focus-visible {
   position: relative;
   white-space: nowrap;
   transform: rotate(-90deg);
-  transform-origin: top left;
-  margin-bottom: 20px;
+  transform-origin: bottom left;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 /* Habit headers */
