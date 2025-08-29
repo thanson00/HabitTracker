@@ -80,14 +80,14 @@ button:focus-visible {
 }
 .category-headers, .habit-headers, .row { 
   display:grid; 
-  grid-template-columns: 80px 120px repeat(4, minmax(80px,1fr)) repeat(4, minmax(80px,1fr)) repeat(4, minmax(80px,1fr)); 
+  grid-template-columns: 80px 120px repeat(4, 20px) repeat(4, 20px) repeat(4, minmax(80px,1fr)); 
   gap:0px; 
 }
 .cell { 
   border: none;
   background: transparent;
   border-radius: var(--radius); 
-  padding: 8px 6px;
+  padding: 4px 6px;
   font-family: var(--font-family);
   position: relative;
 }
@@ -130,8 +130,8 @@ button:focus-visible {
 }
 .tick { 
   cursor:pointer; 
-  font-size:1.1rem; 
-  min-height:40px; 
+  font-size:1rem; 
+  min-height:20px; 
   display:grid; 
   place-items:center; 
   border-radius:var(--radius); 
@@ -160,7 +160,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
+  min-height: 20px;
   padding: 4px;
 }
 
