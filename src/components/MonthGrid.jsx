@@ -25,54 +25,33 @@ export default function MonthGrid({
     return true;
   };
 
-  // Calculate column counts for grid template
-  const notesCols = 1;
-  const buildCols = habits.build.length;
-  const breakCols = habits.break.length;
-  const trackCols = habits.track.length;
-  const totalCols = 1 + notesCols + buildCols + breakCols + trackCols;
+  // Calculate column template for consistent grid alignment
+  const DATE_W = 120, NOTES_W = 140, GOAL_W = 96;
+  const goals = [...habits.build, ...habits.break, ...habits.track];
+  const colTemplate = `${DATE_W}px ${NOTES_W}px repeat(${goals.length}, ${GOAL_W}px)`;
 
   return (
     <div className="month-grid">
       {/* Category Headers Row */}
-      <div className="category-headers">
+      <div className="header" style={{ gridTemplateColumns: colTemplate }}>
         <div className="cell date-col head">Date</div>
         <div className="cell notes-col head">Notes</div>
-        <div className="cell category-header build" style={{ gridColumn: `span ${buildCols}` }}>
-          Build
-        </div>
-        <div className="cell spacer"></div>
-        <div className="cell category-header break" style={{ gridColumn: `span ${breakCols}` }}>
-          Break
-        </div>
-        <div className="cell spacer"></div>
-        <div className="cell category-header track" style={{ gridColumn: `span ${trackCols}` }}>
-          Track
-        </div>
-      </div>
-
-      {/* Habit Headers Row */}
-      <div className="habit-headers">
-        <div className="cell date-col head"></div>
-        <div className="cell notes-col head"></div>
         {habits.build.map((h) => (
-          <div key={h.id} className="cell habit-head build" title={h.title}>
-            <div className="habit-chip" style={{ background: h.categoryColor }} />
-            <div className="habit-title">{h.title}</div>
+          <div key={h.id} className="cell goal-head" title={h.title}>
+            <div className="goal-chip" style={{ background: h.categoryColor }} />
+            <div className="goal-title">{h.title}</div>
           </div>
         ))}
-        <div className="cell spacer"></div>
         {habits.break.map((h) => (
-          <div key={h.id} className="cell habit-head break" title={h.title}>
-            <div className="habit-chip" style={{ background: h.categoryColor }} />
-            <div className="habit-title">{h.title}</div>
+          <div key={h.id} className="cell goal-head" title={h.title}>
+            <div className="goal-chip" style={{ background: h.categoryColor }} />
+            <div className="goal-title">{h.title}</div>
           </div>
         ))}
-        <div className="cell spacer"></div>
         {habits.track.map((h) => (
-          <div key={h.id} className="cell habit-head track" title={h.title}>
-            <div className="habit-chip" style={{ background: h.categoryColor }} />
-            <div className="habit-title">{h.title}</div>
+          <div key={h.id} className="cell goal-head" title={h.title}>
+            <div className="goal-chip" style={{ background: h.categoryColor }} />
+            <div className="goal-title">{h.title}</div>
           </div>
         ))}
       </div>
@@ -81,7 +60,7 @@ export default function MonthGrid({
       {orderedDays.map((date) => {
         const ymd = toYMD(date);
         return (
-          <div className="row" key={ymd}>
+          <div className="row" key={ymd} style={{ gridTemplateColumns: colTemplate }}>
             <div 
               className="cell date-col" 
               onClick={() => onOpenDay?.(ymd)}
@@ -123,8 +102,6 @@ export default function MonthGrid({
               );
             })}
 
-            <div className="cell spacer"></div>
-
             {/* Break Habits */}
             {habits.break.map((h) => {
               const applies = habitApplies(h, date);
@@ -143,8 +120,6 @@ export default function MonthGrid({
                 </button>
               );
             })}
-
-            <div className="cell spacer"></div>
 
             {/* Track Metrics */}
             {habits.track.map((h) => {

@@ -78,10 +78,9 @@ button:focus-visible {
   background: transparent;
   padding: 20px;
 }
-.category-headers, .habit-headers, .row { 
-  display:grid; 
-  grid-template-columns: 80px 120px repeat(4, 20px) 4px repeat(4, 20px) 4px repeat(4, minmax(80px,1fr)); 
-  gap:0px; 
+.header, .row { 
+  display: grid;
+  gap: 0;
 }
 .cell { 
   border: none;
@@ -106,24 +105,22 @@ button:focus-visible {
 }
 .goal-head {
   display: flex;
-  justify-content: center;   /* center over column */
-  align-items: flex-end;      /* push label to bottom of header cell */
-  padding: 0; 
+  justify-content: center;   /* horizontally center over column */
+  align-items: flex-end;      /* sit on baseline above first row */
+  padding: 0 0 4px 0;         /* small baseline padding */
   margin: 0;
-  min-height: 120px;
+  height: 100%;
 }
 
 .goal-head .goal-title {
-  /* vertical, not flipped */
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  transform: none;            /* IMPORTANT: no rotate(180deg) or rotate(90deg) */
+  transform: translateX(var(--nudge, 0)); /* micro adjust if needed */
   transform-origin: bottom center;
   line-height: 1;
-  width: 100%;
   text-align: center;
   margin: 0;
-  padding: 0 2px;
+  width: max-content;
   font-weight: 600; 
   font-size: 0.9rem; 
   color: var(--text); 
@@ -133,7 +130,7 @@ button:focus-visible {
 .goal-head .goal-sub {
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  transform: none;
+  transform: translateX(var(--nudge, 0));
   transform-origin: bottom center;
   line-height: 1;
   text-align: center;
@@ -258,56 +255,7 @@ button:focus-visible {
   border-bottom-color: var(--text);
 }
 
-/* Unified header styles - all headers use the same canonical rules */
-.habit-head {
-  display: flex;
-  justify-content: center;   /* center over column */
-  align-items: flex-end;      /* push label to bottom of header cell */
-  padding: 0; 
-  margin: 0;
-  min-height: 120px;
-  border: none;
-  position: relative;
-  white-space: nowrap;
-}
 
-.habit-head .habit-title {
-  /* vertical, not flipped */
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: none;            /* IMPORTANT: no rotate(180deg) or rotate(90deg) */
-  transform-origin: bottom center;
-  line-height: 1;
-  width: 100%;
-  text-align: center;
-  margin: 0;
-  padding: 0 2px;
-  font-weight: 600; 
-  font-size: 0.8rem; 
-  color: var(--text); 
-  font-family: var(--font-family);
-}
-
-.habit-head .habit-sub {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: none;
-  transform-origin: bottom center;
-  line-height: 1;
-  text-align: center;
-  margin-top: 6px;
-  color: var(--text-muted);
-  font-size: 0.6rem; 
-  font-family: var(--font-family);
-}
-
-/* Habit headers */
-.habit-headers {
-  position: sticky;
-  top: 60px;
-  background: transparent;
-  z-index: 2;
-}
 
 /* Month navigation styling */
 .month-nav {
