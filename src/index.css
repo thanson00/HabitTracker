@@ -243,6 +243,7 @@ button:focus-visible {
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
+  padding-bottom: 20px;
   border: none;
   border-bottom: none;
   border-top: none;
