@@ -46,9 +46,11 @@ export default function MonthGrid({
               onClick={() => onOpenDay?.(ymd)}
               style={{ cursor: onOpenDay ? "pointer" : "default" }}
             >
-              <div className="date-num">{date.getDate()}</div>
-              <div className="date-wd">
-                {["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][date.getDay()]}
+              <div className="date-info">
+                <span className="date-num">{date.getDate()}</span>
+                <span className="date-wd">
+                  {["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][date.getDay()]}
+                </span>
               </div>
             </div>
 
