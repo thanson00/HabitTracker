@@ -243,14 +243,13 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 1px 1px 8px 1px;
   border: none;
   border-bottom: none;
   border-top: none;
   border-left: none;
   border-right: none;
   position: relative;
-  transform: rotate(90deg);
+  transform: rotate(-90deg);
 }
 
 /* Habit headers */
