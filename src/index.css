@@ -237,12 +237,12 @@ button:focus-visible {
 
 /* Remove borders from habit headers */
 .habit-head {
-  text-align: center;
+  text-align: left;
   padding: 1px;
   height: 120px;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-start;
   border: none;
   border-bottom: none;
   border-top: none;
@@ -250,8 +250,8 @@ button:focus-visible {
   border-right: none;
   position: relative;
   white-space: nowrap;
-  transform: rotate(-90deg);
-  transform-origin: bottom center;
+  transform: rotate(-90deg) translateX(60px);
+  transform-origin: bottom left;
   margin-bottom: 0;
   padding-bottom: 0;
 }
